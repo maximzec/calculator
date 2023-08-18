@@ -8,5 +8,5 @@ import (
 func main() {
 	var input string
 	fmt.Scan(&input)
-	fmt.Println(rpn.ConvertStrToRpn(input))
+	fmt.Printf("%v:", rpn.ConvertStrToRpn(input))
 }

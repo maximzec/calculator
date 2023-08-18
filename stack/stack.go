@@ -7,31 +7,34 @@ package stack
 //TODO: Переделать структуру хранения стэка
 // - Это должна быть структура с внутренним стэком
 
-type ByteStack struct {
-	stack []byte
+type StringStack struct {
+	stack []string
 }
 
-func CreateNewByteStack() *ByteStack {
-	bs := ByteStack{
-		stack: make([]byte, 0),
+func CreateNewStringStack() *StringStack {
+	bs := StringStack{
+		stack: make([]string, 0),
 	}
 	return &bs
 }
 
-func (bs *ByteStack) Empty() bool {
-	return len(bs.stack) == 0
+func (ss *StringStack) Empty() bool {
+	return len(ss.stack) == 0
 }
 
-func (bs *ByteStack) Push(b byte) {
-	bs.stack = append(bs.stack, b)
+func (ss *StringStack) Push(s string) {
+	// TODO: Нужно добавить проверку на пустоту стэка
+	ss.stack = append(ss.stack, s)
 }
 
-func (bs *ByteStack) Pop() byte {
-	b := bs.stack[len(bs.stack)-1]
-	bs.stack = bs.stack[:len(bs.stack)-1]
-	return b
+func (ss *StringStack) Pop() string {
+	// TODO: Нужно добавить проверку на пустоту стэка
+	s := ss.stack[len(ss.stack)-1]
+	ss.stack = ss.stack[:len(ss.stack)-1]
+	return s
 }
 
-func (bs *ByteStack) Peek() byte {
-	return bs.stack[len(bs.stack)-1]
+func (ss *StringStack) Peek() string {
+	// TODO: Нужно добавить проверку на пустоту стэка
+	return ss.stack[len(ss.stack)-1]
 }
