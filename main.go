@@ -2,11 +2,19 @@ package main
 
 import (
 	"calculator/rpn"
-	"fmt"
+	"net/http"
+	"strings"
+
+	"github.com/labstack/echo/v4"
 )
 
 func main() {
-	var input string
-	fmt.Scan(&input)
-	fmt.Printf("%v:", rpn.ConvertStrToRpn(input))
+	e := echo.New()
+	e.POST("/calculate", calculate)
+	e.Logger.Fatal(e.Start(":1323"))
+}
+
+func calculate(c echo.Context) error {
+	param := c.QueryParam("equation")
+	return c.String(http.StatusOK, strings.Join(rpn.ConvertStrToRpn(param), " "))
 }
